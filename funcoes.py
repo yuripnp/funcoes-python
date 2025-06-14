@@ -38,3 +38,16 @@ print(list(zip([1,2,3],["a","b","c"],[True, False, False])))
 print(list(sorted([1,2,3,6,4,9,3])))
 print(list(sorted(["abacaxi","cenoura","bolo","melancia"], key=len)))
 
+# -- funções closures --
+# closure é uma função interna que lembra do ambiente onde foi criada, mesmo apos a execução da função
+# externa ter terminada. Isso permite que ela mantenha o estado de variaveis sem a necessidade de usar
+# globalmente
+def multiplicador(n): # função externa
+    def multiplica(x): # closure
+        return x * n # usa a variavel n da função externa
+    return multiplica # retorna a função interna
+
+# as closures são uteis para encapsular lógicas e criar funções especializadas sem usar variaveis globais
+triplo = multiplicador(5)
+valor = triplo(3)
+print(valor)
